@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RouteAlong - Street View for End Location</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map, #pano {
+        float: left;
+        height: 100%;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="NAVIGATElOGINForm" method="post" action="TestMaps.html">
+					<div>
+						<button class="button button-block button-dark" type="submit">Go Back</button>
+					</div>
+		</form>
+    
+    <div id="map"></div>
+    <div id="pano"></div>
+    <script>
+
+function initialize() {
+  if(localStorage.getItem("uname")==null)
+          {
+            alert("You cannot go back. Login once again with Valid Credentials");
+            window.location = 'index.html'
+          }
+  var lati=parseFloat(localStorage.getItem("startLat"));
+  var longi=parseFloat(localStorage.getItem("startLng"));
+  var fenway = {lat: lati, lng: longi};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: fenway,
+    zoom: 14
+  });
+  var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('pano'), {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  map.setStreetView(panorama);
+}
+
+    </script>
+    <script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDncbgg4IsBChB2srsZqFzRZsCY2N2_kV0&signed_in=true&callback=initialize">
+    </script>
+  </body>
+</html>

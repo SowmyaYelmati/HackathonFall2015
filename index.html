@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html  data-ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>RouteAlong Login</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>  
+  <script src="js/app1.js"></script>
+  <script type="text/javascript" language="JavaScript">
+            function ClearValues()
+            {
+
+                localStorage.clear();
+
+            }
+             </script>
+</head>
+<body onload="ClearValues();">
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="index.html">Zero Type</a>
+			</div>
+			<ul id="navigation">
+				<li class="active">
+					<a href="index.html">Login</a>
+				</li>
+				<li>
+					<a href="register.html">Register</a>
+				</li>				
+			</ul>
+		</div>
+	</div>
+	<div id="adbox">
+		<div class="clearfix" ng-controller="loginCtrl">
+			
+			<div>
+				<h2>Login</h2>
+				
+				<table>
+					<tr>
+						<td><label class="item item-input"> Username/Email Address: </label></td>
+						<td><input type="email" name="email" id="email" data-ng-model="uname" placeholder="Email ID"/></td>
+					</tr>
+					<tr>
+						<td><label class="item item-input"> Password: </label></td>
+						<td><input pattern=".{8,}" required title="8 characters minimum" type="password" name="pword" id="pword" data-ng-model="pword" placeholder="Password"/></td>
+					</tr>
+				</table>
+				<div>
+					<div>
+						<button type="submit" class="button" id="register" name="register" ng_click="loginUser(uname, pword)">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

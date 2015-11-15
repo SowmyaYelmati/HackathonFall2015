@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html data-ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>RouteAlong Register</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>  
+  <script src="js/app1.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div>
+			<div class="logo">
+				<a href="index.html">Zero Type</a>
+			</div>
+			<ul id="navigation">
+				<li>
+					<a href="index.html">Login</a>
+				</li>
+				<li class="active">
+					<a href="register.html">Register</a>
+				</li>				
+			</ul>
+		</div>
+	</div>
+	<div id="adbox">
+		<div class="clearfix" ng-controller="RegisterController" >
+			<h2>Registration Form</h2></br>
+						
+			<table>
+				<tr>
+					<td><label class="item item-input"> First Name: </label></td>
+					<td><input type="text" name="fname" id="fname" data-ng-model="fname" placeholder="First Name"/></td>
+				</tr>
+				<tr>
+					<td><label class="item item-input"> Last Name: </label></td>
+					<td><input type="text" name="lname" id="lname" data-ng-model="lname" placeholder="Last Name"/></td>
+				</tr>
+				<tr>
+					<td><label class="item item-input"> Password: </label></td>
+					<td><input pattern=".{8,}" required title="8 characters minimum" type="password" name="pword" id="pword" data-ng-model="pword" placeholder="Password"/></td>
+				</tr>
+				<tr>
+					<td><label class="item item-input"> Username/Email Address: </label></td>
+					<td><input type="email" name="email" id="email" data-ng-model="uname" placeholder="Email ID"/></td>
+				</tr>
+
+			</table>
+			
+
+			<div>
+				<div>
+					<button type="submit" class="button button-block button-dark" id="register" name="register" ng_click="register(uname, fname, lname, pword)">Create New Account</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RouteAlong - Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+    <script>
+        var map;
+        var infowindow;
+        
+        function initMap() {
+          if(localStorage.getItem("uname")==null)
+          {
+            alert("You cannot go back. Login once again with Valid Credentials");
+            window.location = 'index.html'
+          }
+            var lati;
+          var longi;
+          var pyrmont=[];
+          
+          var localcount=localStorage.length-5;
+          localcount=Math.round(localcount/2);
+          var j;
+          
+          for (var i = 0; i < localcount-1; i=i+1){
+               j=i*25;
+               //alert(j);
+               lati=parseFloat(localStorage.getItem("startLat"+j));
+               longi=parseFloat(localStorage.getItem("startLng"+j));
+               //console.log("Simple: startlat"+j+" : "+lati+" , "+longi);
+               pyrmont[i] = {lat: lati, lng: longi};
+               //console.log("pyrmont:"+i+" startlat"+j+" : "+pyrmont[i].lat+" , "+pyrmont[i].lng);
+          }
+          
+          
+          mapOptions = new google.maps.Map(document.getElementById('map'), {
+            center: pyrmont[0],
+            zoom: 6
+          });
+        
+          
+          for (var i = 0; i < localcount-1; i=i+1){
+          infowindow = new google.maps.InfoWindow();
+        
+          var service = new google.maps.places.PlacesService(mapOptions);
+          
+            console.log(pyrmont[i].lat);
+            service.nearbySearch({
+              location: pyrmont[i],
+              radius: 50000,
+              types: [localStorage.getItem("place")]
+            }, callback);
+          }
+        }
+        
+        function callback(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var k = 0; k < results.length; k++) {
+              console.log("Inside Call Back:"+k);
+              createMarker(results[k]);
+            }
+          }
+        }
+        
+        function createMarker(place) {
+          var placeLoc = place.geometry.location;
+          var marker = new google.maps.Marker({
+            map: mapOptions,
+            position: place.geometry.location
+          });
+        
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent("Name: "+place.name+"; Rating: "+place.rating+"; Vicinity/Locality: "+place.vicinity);
+            infowindow.open(mapOptions, this);
+          });
+        }
+
+    </script>
+  </head>
+  <body>
+    <form name="NAVIGATElOGINForm" method="post" action="TestMaps.html">
+					<div>
+						<button class="button button-block button-dark" type="submit">Go Back</button>
+					</div>
+		</form>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&callback=initMap&sensor=false" async defer></script>
+  </body>
+</html>
