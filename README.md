@@ -1,6 +1,6 @@
 # HackathonFall2015
-AdKnowledge Usecase I
-Steps to Use the App:
+#AdKnowledge Usecase I
+#Steps to Use the App:
 
 ***Initially, user should open index.html
 
