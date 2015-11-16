@@ -16,8 +16,11 @@ Steps to Use the App:
 
 ##Route Maps Page:
 1) One can provide the Source and Destination to which he/she wants to have a trip.
+
 2) After clicking Get Route, one can see the route between the source and destination.
+
 3) User can also select the modes of travel between the locations.
+
 4) In transit mode user can even see the timings of transit and when and where he can board for it.
 
 ##Street View:
@@ -31,16 +34,23 @@ Steps to Use the App:
 
 ##Places Between:
 1) Once user searched for the locations and directions, one can select the drop down for the type of the place the user wannts to search and click on Places in between.
+
 2) This action will navigate the user to a Map where the route between the source and destination will be filled with markers of particular type of place.
+
 3) User can even click on the marker to see the name of the location and address of it.
 
 ##Technologies Used:
-HTML
-Angular JS for Javascript
-Mongo Lab(https://mongolab.com/) - for Login and User Credentials Database
-LocalStorage of HTML5 for session credentials(one cannot navigate back after logout from application)
+1)HTML
+
+2)Angular JS for Javascript
+
+3)Mongo Lab(https://mongolab.com/) - for Login and User Credentials Database
+
+4)LocalStorage of HTML5 for session credentials(one cannot navigate back after logout from application)
 
 ##Approach for the Solution:
 1) API's Used: GOOGLE MAPS API, GOOGLE PLACES API
+
 2) Once the route is getting calculated between source and destination, we have saved some latitudes and longitudes along the route and saved in local storage along with type of place.
+
 3) Once user navigated to Places page, the variables saved in local storage will be used as input for the GOOGLE places API places identifier and thus the places are marked on map.
